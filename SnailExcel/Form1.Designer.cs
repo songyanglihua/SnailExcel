@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_dir_info = new System.Windows.Forms.Label();
             this.btn_view = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_dir = new System.Windows.Forms.TextBox();
-            this.txt_dir_info = new System.Windows.Forms.Label();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +51,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "设置需要批量处理文件的目录(Excel所属目录)";
+            // 
+            // txt_dir_info
+            // 
+            this.txt_dir_info.AutoSize = true;
+            this.txt_dir_info.Location = new System.Drawing.Point(119, 65);
+            this.txt_dir_info.Name = "txt_dir_info";
+            this.txt_dir_info.Size = new System.Drawing.Size(0, 15);
+            this.txt_dir_info.TabIndex = 3;
             // 
             // btn_view
             // 
@@ -80,13 +90,12 @@
             this.txt_dir.DragDrop += new System.Windows.Forms.DragEventHandler(this.txt_dir_DragDrop);
             this.txt_dir.DragEnter += new System.Windows.Forms.DragEventHandler(this.txt_dir_DragEnter);
             // 
-            // txt_dir_info
+            // notifyIcon
             // 
-            this.txt_dir_info.AutoSize = true;
-            this.txt_dir_info.Location = new System.Drawing.Point(119, 65);
-            this.txt_dir_info.Name = "txt_dir_info";
-            this.txt_dir_info.Size = new System.Drawing.Size(0, 15);
-            this.txt_dir_info.TabIndex = 3;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Excel蜗牛助手";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // Form1
             // 
@@ -97,6 +106,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Excel蜗牛助手";
+            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -110,6 +120,7 @@
         private System.Windows.Forms.TextBox txt_dir;
         private System.Windows.Forms.Button btn_view;
         private System.Windows.Forms.Label txt_dir_info;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 

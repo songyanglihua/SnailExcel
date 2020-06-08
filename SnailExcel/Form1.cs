@@ -95,6 +95,26 @@ namespace SnailExcel
 
         }
 
+        /// <summary>
+        /// 窗体大小改变时触发该事件，用于最小化到托盘
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)    //最小化到系统托盘
+            {
+                notifyIcon.Visible = true;    //显示托盘图标
+                this.Hide();    //隐藏窗口
+            }
+        }
 
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            notifyIcon.Visible = false;
+            this.Show();
+            WindowState = FormWindowState.Normal;
+            this.Focus();
+        }
     }
 }
