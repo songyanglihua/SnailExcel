@@ -16,5 +16,17 @@ namespace SnailExcel
         {
             InitializeComponent();
         }
+
+        private void btn_view_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folder = new FolderBrowserDialog();
+            folder.Description = "选择所有文件存放目录";
+            if (folder.ShowDialog() == DialogResult.OK)
+            {
+
+                string sPath = folder.SelectedPath;
+                txt_dir.Text = sPath;
+            }
+        }
     }
 }
