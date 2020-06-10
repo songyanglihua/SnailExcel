@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -17,8 +18,22 @@ namespace SnailExcel
         public Form1()
         {
             InitializeComponent();
+            //SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=snail.db;Version=3;");
+            //if (m_dbConnection.State != System.Data.ConnectionState.Open)
+            //{
+            //    m_dbConnection.Open();
+            //    //初始化过程查询下最近的配置数据
+            //    SQLiteCommand cmd = new SQLiteCommand();
+            //    cmd.Connection = m_dbConnection;
+            //    cmd.CommandText = "SELECT * FROM Configs";
+            //    SQLiteDataReader sr = cmd.ExecuteReader();
+            //    sr.Close();
+            //}
+            //m_dbConnection.Close();
         }
-        public string DirPath = "";
+
+
+        public string DirPath = "";     //需要批处理excel的目录
 
         /// <summary>
         /// 目录浏览按钮
@@ -142,6 +157,11 @@ namespace SnailExcel
 
                 }
             }
+        }
+
+        private void btn_RangeAdd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
