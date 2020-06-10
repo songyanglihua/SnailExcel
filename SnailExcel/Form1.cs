@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -115,6 +116,32 @@ namespace SnailExcel
             this.Show();
             WindowState = FormWindowState.Normal;
             this.Focus();
+        }
+
+        private void btn_Start_Click(object sender, EventArgs e)
+        {
+            //通过ThreadStart委托告诉子线程讲执行什么方法
+            ThreadStart threadStart = new ThreadStart(HandleExcels);
+            Thread thread = new Thread(threadStart);
+            thread.Start();
+        }
+
+        private void HandleExcels()
+        {
+            //第一步，获取目录下的所有excel文件
+            List<string> files = Directory.GetFiles(DirPath + @"\", "*.xlsx", SearchOption.TopDirectoryOnly).ToList();
+            foreach (var file in files)
+            {
+                if (file.Contains("$"))
+                {
+                    //忽略
+                }
+                else
+                {
+                    //对不带$符号的excel进行操作
+
+                }
+            }
         }
     }
 }
